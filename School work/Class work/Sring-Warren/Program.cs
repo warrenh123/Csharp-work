@@ -1,1 +1,1 @@
-﻿Console.WriteLine("String");
+﻿Console.WriteLine("String work");
