@@ -128,3 +128,27 @@ static string VariableNameHelper(string input, string choice)
 Debug.Assert(VariableNameHelper("hello world", "snake_case") == "hello_world");
 Debug.Assert(VariableNameHelper("hello world", "camelCase") == "helloWorld");
 Debug.Assert(VariableNameHelper("hello world", "PascalCase") == "HelloWorld");
+
+//Exercise 7
+static string PigLatin(string input)
+{
+    string withoutPunctuation = input.Remove(input.Length - 1);
+    string output = "";
+    string[] splitedInput = withoutPunctuation.Split(' ');
+
+    for (int i = 0; i < splitedInput.Length; i++)
+    {
+        string word = splitedInput[i];
+
+        char firstLetter = word[0];
+        string remainingLetters = word.Substring(1, word.Length - 1);
+
+        string newWord = string.Concat(remainingLetters, firstLetter, "ay");
+
+        if (i == 0) output = newWord;
+        else output = string.Concat(output, " ", newWord);
+    }
+    return output + ".";
+}
+
+Debug.Assert(PigLatin("The cat sat on the mat.") == "heTay atcay atsay noay hetay atmay.");
